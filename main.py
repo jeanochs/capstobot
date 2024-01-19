@@ -1,6 +1,9 @@
 from flask import Flask, request
 from time import sleep
 import requests
+import os
+
+BOT_KEY = os.environ['BOT_KEY']
 
 app = Flask(__name__)
 
@@ -8,27 +11,27 @@ posting_url = 'https://api.groupme.com/v3/bots/post'
 testing_url = 'http://127.0.0.1:5000/'
 
 sample_text_1 = {
-    'bot_id':'5e351616af1e103a36be24f653',
+    'bot_id':BOT_KEY,
     'text':'The groups are as follows: '
 }
 
 sample_text_2 = {
-    'bot_id':'5e351616af1e103a36be24f653',
+    'bot_id':BOT_KEY,
     'text':'Positioning System: Javon Thompson, Mason Pruitte, Alisa McBryde'
 }
 
 sample_text_3 = {
-    'bot_id':'5e351616af1e103a36be24f653',
+    'bot_id':BOT_KEY,
     'text':'Span Connector: Noah Hackworth, Mark Lee, Chloe Sims'
 }
 
 sample_text_4 = {
-    'bot_id':'5e351616af1e103a36be24f653',
+    'bot_id':BOT_KEY,
     'text':'Main Systems Control: Cory Howlette, Jalani Eanochs, Kayla Hamilton'
 }
 
 sample_text_5 = {
-    'bot_id':'5e351616af1e103a36be24f653',
+    'bot_id':BOT_KEY,
     'text':'Window Interface System: Tyriq Turner, Landry Samuels, Issac Thomas'
 }
 

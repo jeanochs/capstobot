@@ -10,30 +10,21 @@ app = Flask(__name__)
 posting_url = 'https://api.groupme.com/v3/bots/post'
 testing_url = 'http://127.0.0.1:5000/'
 
-sample_text_1 = {
-    'bot_id':BOT_KEY,
-    'text':'The groups are as follows: '
-}
+group_list_text = 'The groups are as follows: '+chr(10)+chr(10)+'Positioning System: Javon Thompson, Mason Pruitte, Alisa McBryde'+chr(10)+chr(10)+'Span Connector: Noah Hackworth, Mark Lee, Chloe Sims'+chr(10)+chr(10)+'Main Systems Control: Cory Howlette, Jalani Eanochs, Kayla Hamilton'+chr(10)+chr(10)+'Window Interface System: Tyriq Turner, Landry Samuels, Issac Thomas'
 
-sample_text_2 = {
-    'bot_id':BOT_KEY,
-    'text':'Positioning System: Javon Thompson, Mason Pruitte, Alisa McBryde'
-}
+help_text = 'The purpose of this bot is to keep track of project developments in the Capstone class.'+chr(10)+'Its secondary purpose is to act as a beta testing ground for larger general purpose bot projects.'+chr(10)+'Feel free to make any suggestions.'+chr(10)+chr(10)+'Current commands for this bot: '+chr(10)+':group_list -- Lists the groups and their members.'+chr(10)+':help -- Show this dialogue box.'
 
-sample_text_3 = {
-    'bot_id':BOT_KEY,
-    'text':'Span Connector: Noah Hackworth, Mark Lee, Chloe Sims'
-}
 
-sample_text_4 = {
-    'bot_id':BOT_KEY,
-    'text':'Main Systems Control: Cory Howlette, Jalani Eanochs, Kayla Hamilton'
-}
+def compose_message(message):
+    data = {
+        'name':'Capstobot',
+        'text':message,
+        'bot_id':BOT_KEY
+    }
+    return data
 
-sample_text_5 = {
-    'bot_id':BOT_KEY,
-    'text':'Window Interface System: Tyriq Turner, Landry Samuels, Issac Thomas'
-}
+group_list = compose_message(group_list_text)
+help_menu = compose_message(help_text)
 
 
 @app.route("/", methods=['POST'])
@@ -42,15 +33,9 @@ def main():
     print(data)
 
     if data['name'] != 'Capstobot' and data['text'] == ':group_status':
-        requests.post(posting_url, json=sample_text_1)
-        sleep(0.5)
-        requests.post(posting_url, json=sample_text_2)
-        sleep(0.5)
-        requests.post(posting_url, json=sample_text_3)
-        sleep(0.5)
-        requests.post(posting_url, json=sample_text_4)
-        sleep(0.5)
-        requests.post(posting_url, json=sample_text_5)
+        requests.post(posting_url, json=group_list)
+    elif data['name'] != 'Capstobot' and data['text'] == ':help':
+        requests.post(posting_url, json=help_menu)
 
     return 'Success'
 

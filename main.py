@@ -1,4 +1,5 @@
 from flask import Flask, request
+from time import sleep
 import requests
 
 app = Flask(__name__)
@@ -39,9 +40,13 @@ def main():
 
     if data['name'] != 'Capstobot' and data['text'] == ':group_status':
         requests.post(posting_url, json=sample_text_1)
+        sleep(0.5)
         requests.post(posting_url, json=sample_text_2)
+        sleep(0.5)
         requests.post(posting_url, json=sample_text_3)
+        sleep(0.5)
         requests.post(posting_url, json=sample_text_4)
+        sleep(0.5)
         requests.post(posting_url, json=sample_text_5)
 
     return 'Success'

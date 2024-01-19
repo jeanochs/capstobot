@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-posting_url = 'https://api.groupme.com/v3/bots?token=ptv1teC42pktfUWGNKWUsfDJcisRIHaN5yJv8eZX'
+posting_url = 'https://api.groupme.com/v3/bots'
 
 sample_text = {
     'bot_id':'5e351616af1e103a36be24f653',

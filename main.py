@@ -18,4 +18,5 @@ def main():
     if data['name'] != 'Capstobot':
         requests.post(posting_url, json=sample_text)
 
+    return 'Success'
 
